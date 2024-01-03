@@ -4,6 +4,8 @@ import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import Header from "./pages/components/Header";
 import Footer from "./pages/components/Footer";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (

@@ -9,13 +9,14 @@
 .inner-container{
     background-color: #ecf0f1;
     height: 60vh;
-    width: 30vw;
+    width: 75%;
     display: flex;
     justify-content: center;
 }
 
 .header{
     text-align: center;
+    margin-top: 10px;
 }
 
 .form-container{
@@ -29,8 +30,8 @@
     margin: auto;
 }
 .form-element-container{
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 30px;
     width: 100%;
 }
 

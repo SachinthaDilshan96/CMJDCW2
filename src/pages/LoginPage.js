@@ -1,5 +1,5 @@
 import "./CSS/LoginPage.css"
-import {InputAdornment, TextField} from "@mui/material";
+import {InputAdornment, Link, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
 import IconButton from "@mui/material/IconButton";
@@ -8,22 +8,25 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 const LoginPage =() =>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isEmailValid,setIsEmailValid] = useState(false);
+    const [isEmailValid,setIsEmailValid] = useState(true);
     const [isPasswordValid,setIsPasswordValid] = useState(false);
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+    const emailRegex = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+    const handleEmail =(e)=>{
+        if (emailRegex.test(e.target.value)){
+            setEmail(e.target.value);
+            setIsEmailValid(true);
+        }else{
+            setIsEmailValid(false);
+        }
+    }
     return(
-        <div className={"main-container"}>
-            <div className={"inner-container"}>
-                <div className={"form-container"}>
+        <div className="container main-container">
+            <div className="row inner-container">
+                <div className="col-sm-12 col-md-6 form-container">
                     <h2 className={"header"}>Login</h2>
                     <form className={"form"}>
                         <div className={"form-element-container"}>
-                            <TextField error={isEmailValid} onChange={(event)=>setEmail(event.target.value)}  fullWidth="true" id="email" type={"text"} label="Email" variant="outlined" />
+                            <TextField helperText={isEmailValid?" ":"Invalid Email"} error={!isEmailValid} onChange={handleEmail}  fullWidth="true" id="email" type={"email"} label="Email" variant="outlined" />
                         </div>
                         <div className={"form-element-container password-container"}>
                             <TextField
@@ -31,23 +34,12 @@ const LoginPage =() =>{
                                 onChange={(event)=>setPassword(event.target.value)}
                                 fullWidth="true"
                                 id="password"
-                                type={"password"}
+                                type='password'
                                 label="Password"
                                 variant="outlined"
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }/>
+                            />
                         </div>
-                        <p>Forgot password?</p>
+                        <p><Link to={"/"}>Forgot password?</Link></p>
                         <div className={"form-element-container button-container"}>
                             <Button fullWidth={true} type={"submit"} variant={"contained"}>Login</Button>
                         </div>
