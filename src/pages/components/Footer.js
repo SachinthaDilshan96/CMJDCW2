@@ -1,8 +1,8 @@
-
+import "./CSS/Footer.css"
 const Footer =() =>{
     return(
-        <div>
-            Footer
+        <div className={"footer-container"}>
+
         </div>
     )
 }
