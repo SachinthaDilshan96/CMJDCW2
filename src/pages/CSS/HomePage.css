@@ -3,3 +3,14 @@
     width: 100vw;
     height: 100vh;
 }
+
+.inner-container{
+    background-color: darkgray;
+    width: 50%;
+    height: 50%;
+
+}
+
+.main-header{
+    margin-top: 50px;
+}
