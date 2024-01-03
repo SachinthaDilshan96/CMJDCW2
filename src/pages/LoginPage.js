@@ -1,9 +1,8 @@
 import "./CSS/LoginPage.css"
-import {InputAdornment, Link, TextField} from "@mui/material";
+import { Link, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
-import IconButton from "@mui/material/IconButton";
-import {Visibility, VisibilityOff} from "@mui/icons-material";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage =() =>{
     const [email, setEmail] = useState("");
@@ -11,6 +10,7 @@ const LoginPage =() =>{
     const [isEmailValid,setIsEmailValid] = useState(true);
     const [isPasswordValid,setIsPasswordValid] = useState(false);
     const emailRegex = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+    const navigate = useNavigate();
     const handleEmail =(e)=>{
         if (emailRegex.test(e.target.value)){
             setEmail(e.target.value);
@@ -46,7 +46,7 @@ const LoginPage =() =>{
                     </form>
                     <div className={"signup-container"}>
                         <p>New to the System?&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                        <Button variant={"contained"}>Sign Up</Button>
+                        <Button onClick={()=>navigate("/signup")} variant={"contained"}>Sign Up</Button>
                     </div>
                 </div>
             </div>
