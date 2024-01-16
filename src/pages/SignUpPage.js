@@ -3,6 +3,7 @@ import {Link, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const SignUpPage =()=>{
     const [firstName, setFirstName] = useState("");
@@ -91,13 +92,33 @@ const SignUpPage =()=>{
         }
     }
 
+    const handleRegister = async (event)=>{
+        event.preventDefault();
+        if (isFirstNameValid && isLastNameValid && isEmailValid && bothPasswordValid){
+            const data = {
+                "firstName":firstName,
+                "lastName":lastName,
+                "email":email,
+                "password":password
+            }
+            const response = await axios.post("http://localhost:8080/auth/register",data);
+            if (response.status === 200){
+                navigation("/login");
+            }else{
+                console.log("failed");
+            }
+        }else{
+            console.log("ee");
+        }
+    }
+
     const navigation = useNavigate();
     return(
         <div className={"container container-main"}>
             <div className={"row inner-container"}>
                 <div className={"col-sm-12 col-md-6 form-container"}>
                     <h1 className={"text-center"}>Sign Up</h1>
-                    <form>
+                    <form onSubmit={handleRegister}>
                         <div className={"form-element-container"}>
                             <TextField error={!isFirstNameValid} onChange={handleFirstName} helperText={isFirstNameValid?" ":firstNameHelperText} variant={"outlined"} fullWidth={true} type={"text"} label={"First Name"}/>
                         </div>
@@ -114,7 +135,7 @@ const SignUpPage =()=>{
                             <TextField error={!bothPasswordValid} onChange={e=>setRetypePassword(e.target.value)} onBlur={validatePasswords} helperText={bothPasswordValid?" ":bothPassHelperText} variant={"outlined"} fullWidth={true} type={"password"} label={"Retype the Password"}/>
                         </div>
                         <div className={"form-element-container"}>
-                            <Button fullWidth={true} type={"submit"} variant={"contained"}>Sign Up</Button>
+                            <Button  fullWidth={true} type={"submit"} variant={"contained"}>Sign Up</Button>
                         </div>
                         <div className={"form-element-container"}>
                             <p className={"text-center"}>Already have an account? <Button variant={"text"} onClick={()=>navigation("/login")}>Login</Button> instead</p>

@@ -3,6 +3,7 @@ import { Link, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 const LoginPage =() =>{
     const [email, setEmail] = useState("");
@@ -19,20 +20,36 @@ const LoginPage =() =>{
             setIsEmailValid(false);
         }
     }
+
+    const handleLogin = async (event)=>{
+        event.preventDefault();
+        const data = {
+            "email":email,
+            "password":password
+        }
+        const response = await axios.post("http://localhost:8080/auth/login",data);
+        if ((await response).status === 200){
+            localStorage.setItem("cmjd_pos_token",response.data);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${response.data}`;
+            navigate("/");
+        }else{
+            console.log("login failed")
+        }
+    }
     return(
         <div className="container main-container">
             <div className="row inner-container">
                 <div className="col-sm-12 col-md-6 form-container">
                     <h2 className={"header"}>Login</h2>
-                    <form className={"form"}>
+                    <form onSubmit={handleLogin} className={"form"}>
                         <div className={"form-element-container"}>
-                            <TextField helperText={isEmailValid?" ":"Invalid Email"} error={!isEmailValid} onChange={handleEmail}  fullWidth="true" id="email" type={"email"} label="Email" variant="outlined" />
+                            <TextField helperText={isEmailValid?" ":"Invalid Email"} error={!isEmailValid} onChange={handleEmail}  fullWidth={true} id="email" type={"email"} label="Email" variant="outlined" />
                         </div>
                         <div className={"form-element-container password-container"}>
                             <TextField
                                 error={isPasswordValid}
                                 onChange={(event)=>setPassword(event.target.value)}
-                                fullWidth="true"
+                                fullWidth={true}
                                 id="password"
                                 type='password'
                                 label="Password"
