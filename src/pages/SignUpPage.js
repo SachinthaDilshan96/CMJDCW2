@@ -1,4 +1,4 @@
-import "./CSS/SignUpPage.css"
+import styles from "./CSS/SignUpPage.css"
 import {Link, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {useState} from "react";
@@ -114,8 +114,8 @@ const SignUpPage =()=>{
 
     const navigation = useNavigate();
     return(
-        <div className={"container container-main"}>
-            <div className={"row inner-container"}>
+        <div className={"container container-main-signup"}>
+            <div className={"row inner-container-signup"}>
                 <div className={"col-sm-12 col-md-6 form-container"}>
                     <h1 className={"text-center"}>Sign Up</h1>
                     <form onSubmit={handleRegister}>

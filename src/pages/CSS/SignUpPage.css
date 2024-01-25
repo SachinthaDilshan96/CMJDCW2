@@ -1,11 +1,14 @@
-.container-main{
+.container-main-signup{
     height: 100vh;
-    width: 100vw;
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.inner-container{
-    background-color: darkgray;
+.inner-container-signup{
+    background-color: #ecf0f1;
+    width: 60%;
+    display: flex;
+    justify-content: center;
 }

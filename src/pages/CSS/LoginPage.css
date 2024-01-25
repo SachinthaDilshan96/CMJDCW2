@@ -1,4 +1,4 @@
-.main-container{
+.main-container-login{
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.inner-container{
+.inner-container-login{
     background-color: #ecf0f1;
     height: 90vh;
     width: 75%;
@@ -24,6 +24,7 @@
     justify-content: center;
     width: 100%;
     flex-direction: column;
+    margin-top: 0;
 }
 .form{
     width: 80%;
@@ -31,7 +32,7 @@
 }
 .form-element-container{
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     width: 100%;
 }
 
@@ -40,8 +41,8 @@
 }
 
 .button-container{
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .form-element{

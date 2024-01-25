@@ -31,14 +31,14 @@ const LoginPage =() =>{
         if ((await response).status === 200){
             localStorage.setItem("cmjd_pos_token",response.data);
             axios.defaults.headers.common['Authorization'] = `Bearer ${response.data}`;
-            navigate("/");
+            navigate("/dashboard");
         }else{
             console.log("login failed")
         }
     }
     return(
-        <div className="container main-container">
-            <div className="row inner-container">
+        <div className="container main-container-login">
+            <div className="row inner-container-login">
                 <div className="col-sm-12 col-md-6 form-container">
                     <h2 className={"header"}>Login</h2>
                     <form onSubmit={handleLogin} className={"form"}>
