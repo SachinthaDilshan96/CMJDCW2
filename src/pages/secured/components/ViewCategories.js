@@ -1,4 +1,4 @@
-import {DataGrid, useGridApiContext, useGridApiRef} from '@mui/x-data-grid';
+import {DataGrid} from '@mui/x-data-grid';
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Modal from '@mui/material/Modal';
@@ -27,7 +27,6 @@ export const ViewCategories = () => {
     const [updateSuccess, setUpdateSuccess] = useState(false);
     const [categoryName , setCategoryName] = useState("");
 
-    const apiRef = useGridApiRef();
     const fetchCategories = async ()=>{
         const response = await axios.get("http://localhost:8080/category/getAllCategories");
         if (response.status === 200){
@@ -43,7 +42,6 @@ export const ViewCategories = () => {
 
     const handleClose =()=>{
         setIsOpen(!isOpen);
-        apiRef.current.setRowSelectionModel([])
 
     }
 
@@ -83,7 +81,6 @@ export const ViewCategories = () => {
     return (
         <div className={"modal-container"}>
             <DataGrid
-                apiRef={apiRef}
                 onRowClick={handleClick}
                 autoHeight={true}
                 rows={categories}
