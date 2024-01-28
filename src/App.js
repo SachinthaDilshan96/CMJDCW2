@@ -11,6 +11,7 @@ import UserPage from "./pages/secured/UserPage";
 import "./App.css"
 import CategoriesPage from "./pages/secured/CategoriesPage";
 import DashboardHome from "./pages/secured/DashboardHome";
+import Products from "./pages/secured/Products";
 
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
                   <Route path={"/dashboard"} element={<DashboardPage/>}>
                       <Route path={""} element={<DashboardHome/>}/>
                       <Route path={"categories"} element={<CategoriesPage/>}/>
-                      <Route path={"products"} element={<ProductsPage/>}/>
+                      <Route path={"inventory"} element={<ProductsPage/>}/>
                       <Route path={"myAccount"} element={<UserPage/>}/>
+                      <Route path={"products"} element={<Products/>}/>
                   </Route>
               </Route>
               <Route index element={<HomePage/>}/>

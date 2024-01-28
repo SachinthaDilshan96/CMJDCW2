@@ -17,7 +17,7 @@ export const UserPage = () => {
     const fetchData = async ()=>{
         const response = await axios.get();
         if (response.status === 200){
-            setFirstName(response.data.)
+
         }
     }
     useEffect(()=>{

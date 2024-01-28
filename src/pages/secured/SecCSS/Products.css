@@ -1,0 +1,21 @@
+
+.products-inner{
+    display: flex;
+    width: 100%;
+}
+
+.products-container-left{
+}
+
+.checkout-container-right{
+
+}
+.cart-container{
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+
+.form-element-container{
+
+}

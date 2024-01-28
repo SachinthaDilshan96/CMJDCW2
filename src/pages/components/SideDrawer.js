@@ -22,6 +22,7 @@ import ListItemText from '@mui/material/ListItemText';
 import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import InventoryIcon from '@mui/icons-material/Inventory';
 export const SideDrawer = (props) => {
     const drawerWidth = 240;
     const sidebarData = [
@@ -31,13 +32,17 @@ export const SideDrawer = (props) => {
         }, {path:"categories",
             title:"Categories",
             icon:<CategoryIcon/>
-        }, {path:"products",
+        }, {path:"inventory",
+            title:"Inventory",
+            icon:<InventoryIcon/>
+        }, {
+            path:"products",
             title:"Products",
             icon:<AddShoppingCartIcon/>
-        }, {path:"myAccount",
+        },{path:"myAccount",
             title:"My Account",
             icon:<PersonIcon/>
-    }
+        },
     ];
 
     const { window } = props;
