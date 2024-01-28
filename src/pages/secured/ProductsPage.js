@@ -200,7 +200,7 @@ export const ProductsPage = () => {
                                 <FormControl fullWidth={true} sx={{ m: 1, minWidth: 80 }}>
                                     <TextField variant={"outlined"} fullWidth={true}  type={"text"} label={"Product Name"}  onChange={e=>setSearchText(e.target.value)}/>
                                 </FormControl>
-                                  </div>
+                            </div>
                             <div className={"form-element-container col-4"}>
                                 <FormControl fullWidth={true} sx={{ m: 1, minWidth: 80 }}>
                                     <InputLabel id="demo-simple-select-autowidth-label">Category</InputLabel>

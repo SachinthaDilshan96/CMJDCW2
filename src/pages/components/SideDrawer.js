@@ -19,7 +19,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
+import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 export const SideDrawer = (props) => {
@@ -34,7 +34,10 @@ export const SideDrawer = (props) => {
         }, {path:"products",
             title:"Products",
             icon:<AddShoppingCartIcon/>
-        }
+        }, {path:"myAccount",
+            title:"My Account",
+            icon:<PersonIcon/>
+    }
     ];
 
     const { window } = props;

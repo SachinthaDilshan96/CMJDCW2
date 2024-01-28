@@ -21,7 +21,7 @@ function App() {
                       <Route path={""} element={<DashboardHome/>}/>
                       <Route path={"categories"} element={<CategoriesPage/>}/>
                       <Route path={"products"} element={<ProductsPage/>}/>
-                      <Route path={"users"} element={<UserPage/>}/>
+                      <Route path={"myAccount"} element={<UserPage/>}/>
                   </Route>
               </Route>
               <Route index element={<HomePage/>}/>
