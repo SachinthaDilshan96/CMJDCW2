@@ -4,3 +4,17 @@
     height:100%;
     margin-top: 80px;
 }
+
+.search-container{
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.modal-inner-container-update-product{
+    margin: auto;
+    background-color: white;
+    width: 600px;
+    height: 600px;
+    margin-top: 80px;
+    padding: 20px;
+}

@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import AddIcon from '@mui/icons-material/Add';
 import ViewCategories from "./components/ViewCategories";
 import Modal from "@mui/material/Modal";
-import {Alert} from "@mui/lab";
+import {Alert} from "@mui/material";
 
 export const CategoriesPage = () => {
     const [isOpen, setIsOpen] = useState(false);
