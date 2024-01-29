@@ -90,6 +90,10 @@ export const ProductsPage = () => {
                 setSaveSuccess(true);
                 loadProducts(0);
                 fetchCategories();
+                setCategoryId(0);
+                setProductName("");
+                setQty(1);
+                setPrice(1);
             }else{
                 setErrorText("Product Saving Failed. Please try again");
                 setIsErrorOpen(true);

@@ -135,7 +135,7 @@ export const Products = () => {
                 </Grid>
                 <Grid item xs={12} className={"grid-item container"}>
                     <div className={"products-inner row"}>
-                        <div className={"products-container-left col-sm-9"}>
+                        <div className={"products-container-left col-sm-9"} >
                             <Grid  container>
                                 {
                                     products && products.map((product,index)=>(
