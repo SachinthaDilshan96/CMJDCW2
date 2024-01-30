@@ -1,7 +1,9 @@
 
 .main-container-dashboard{
-
+    height: 110vh;
+    width: 100vw;
     display: flex;
+
 }
 
 .sibebar{

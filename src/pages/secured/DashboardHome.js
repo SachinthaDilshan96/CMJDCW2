@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import QuantityPlot from "./components/QuantityPlot";
 import SalesPlot from "./components/SalesPlot";
+import Footer from "../components/Footer";
 export const DashboardHome = () => {
     const [stats, setStats] = useState([]);
     const fetchStats =async ()=>{

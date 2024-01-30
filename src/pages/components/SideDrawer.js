@@ -39,9 +39,6 @@ export const SideDrawer = (props) => {
             path:"products",
             title:"Products",
             icon:<AddShoppingCartIcon/>
-        },{path:"myAccount",
-            title:"My Account",
-            icon:<PersonIcon/>
         },
     ];
 
