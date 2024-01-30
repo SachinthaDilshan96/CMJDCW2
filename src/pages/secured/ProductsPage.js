@@ -144,7 +144,6 @@ export const ProductsPage = () => {
             setNewQty(response.data.qty);
             setNewUnitPrice(response.data.unitPrice);
             setNewProductCategory(response.data.category);
-            console.log(new Date(response.data.expireDate));
             setNewExpireDate(dayjs( new Date(response.data.expireDate)));
             setProduct(response.data);
         }
