@@ -41,7 +41,7 @@ export const ProductsPage = () => {
     const [newUnitPrice , setNewUnitPrice] = useState(1);
     const [newQty , setNewQty] = useState(1);
     const [newExpireDate , setNewExpireDate] = useState("");
-    const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [expireChanges, setExpireChanges] = useState(false);
 
     const dateObj = new Date();
     const date = moment(dateObj, 'DD/MM/YYYY').format('DD/M/YYYY');
@@ -150,7 +150,7 @@ export const ProductsPage = () => {
     }
     const handleUpdateProduct =async (e)=>{
         e.preventDefault();
-        if(newExpireDate<dateObj){
+        if(expireChanges && (newExpireDate<dateObj)){
             setErrorText("Invalid Expire Date");
             setIsErrorOpen(true);
         }else{
@@ -293,7 +293,10 @@ export const ProductsPage = () => {
                                     <div className={"form-element-container"}>
                                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                                             <DemoContainer components={['DatePicker']} >
-                                                <DatePicker label="Expire Date" defaultValue={expireDate} minDate={date}  onChange={e=>setNewExpireDate(e.$d)}/>
+                                                <DatePicker label="Expire Date" defaultValue={expireDate} minDate={date}  onChange={e=> {
+                                                    setExpireChanges(true)
+                                                    setNewExpireDate(e.$d)
+                                                }}/>
                                             </DemoContainer>
                                         </LocalizationProvider>
                                     </div>
