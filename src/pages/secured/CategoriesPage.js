@@ -12,7 +12,15 @@ export const CategoriesPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [categoryId, setCategoryId] =  useState(0);
     const [categoryName, setCategoryName] = useState("");
+    const [addedBy , setAddedBy] = useState("");
     const [saveSuccess, setSaveSuccess] = useState(false);
+
+    const getAddedBy =()=>{
+        const jwt = localStorage.getItem("cmjd_pos_token");
+        const base64Url = jwt.split('.')[1];
+        const base64 = base64Url.replace('-', '+').replace('_', '/');
+        setAddedBy(JSON.parse(window.atob(base64)).sub.split("@")[0])
+    }
     const handleClose =()=>{
         setIsOpen(!isOpen);
 
@@ -29,7 +37,8 @@ export const CategoriesPage = () => {
     const saveCategory = async (e)=>{
         e.preventDefault();
         const data = {
-            "categoryName":categoryName
+            "addedBy":addedBy,
+            "categoryName":categoryName,
         }
         const response = await axios.post("http://localhost:8080/category/addCategory",data);
         if (response.status == 200){
@@ -46,6 +55,7 @@ export const CategoriesPage = () => {
 
     useEffect(()=>{
         getCategoryId();
+        getAddedBy();
     },[]);
 
     return (
@@ -73,6 +83,9 @@ export const CategoriesPage = () => {
                     <form onSubmit={saveCategory}>
                         <div className={"form-element-container"}>
                             <TextField value={categoryId} variant={"outlined"} fullWidth={true} type={"text"} label={"Category ID"} disabled={true}/>
+                        </div>
+                        <div className={"form-element-container"}>
+                            <TextField value={addedBy} variant={"outlined"} fullWidth={true} type={"text"} label={"Added By"} disabled={true}/>
                         </div>
                         <div className={"form-element-container"}>
                             <TextField variant={"outlined"} fullWidth={true} type={"text"} label={"Category Name"}  onChange={e=>setCategoryName(e.target.value)}/>
