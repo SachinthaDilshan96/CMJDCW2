@@ -5,7 +5,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import MenuIcon from '@mui/icons-material/Menu';
 import {NavLink, useNavigate} from "react-router-dom";
 import {useState} from "react";
-import {Drawer} from "@mui/material";
+import {Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer} from "@mui/material";
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -23,8 +23,15 @@ import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+
+
+DialogContent.propTypes = {children: PropTypes.node};
 export const SideDrawer = (props) => {
-    const drawerWidth = 240;
+    const drawerWidth = 200;
     const sidebarData = [
         {   path:"",
             title:"Home",
@@ -46,6 +53,12 @@ export const SideDrawer = (props) => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [navbarTitle, setNavBarTitle] = useState("Home");
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [openLogoutModal , setOpenLogoutModal]  = useState(false);
+
+    const handleLogoutModalClose =()=>{
+        setOpenLogoutModal(!openLogoutModal);
+    }
 
     const handleDrawerClose = () => {
         setIsClosing(true);
@@ -62,10 +75,19 @@ export const SideDrawer = (props) => {
         }
     };
 
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
     const navigation = useNavigate();
     const handleNavigation =(element)=>{
         setNavBarTitle(element.title);
         navigation(element.path);
+    }
+
+    const handleLogout =()=>{
+        localStorage.removeItem("cmjd_pos_token");
+        navigation("/login");
     }
 
     const drawer = (
@@ -92,7 +114,6 @@ export const SideDrawer = (props) => {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
             <AppBar
                 position="fixed"
                 sx={{
@@ -106,13 +127,35 @@ export const SideDrawer = (props) => {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { sm: 'none',md:"flex" } }}
                     >
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         Dashboard - {navbarTitle}
                     </Typography>
+                    <Button style={{marginLeft:'20px',backgroundColor:'#033dfc',}} variant={"contained"} onClick={e=>setOpenLogoutModal(!openLogoutModal)}>Logout</Button>
+                    <Dialog
+                        open={openLogoutModal}
+                        onClose={handleLogoutModalClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Logout"}
+                        </DialogTitle>
+                        <DialogContent style={{width:'350px'}}>
+                            <DialogContentText id="alert-dialog-description">
+                                Are you sure?
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button variant={"contained"} color={"error"} onClick={handleLogoutModalClose}>Cancel</Button>
+                            <Button variant={"contained"} onClick={handleLogout} autoFocus>
+                                Logout
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 </Toolbar>
             </AppBar>
             <Box
@@ -146,12 +189,6 @@ export const SideDrawer = (props) => {
                 >
                     {drawer}
                 </Drawer>
-            </Box>
-            <Box
-                component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-            >
-                <Toolbar />
             </Box>
         </Box>
     )
