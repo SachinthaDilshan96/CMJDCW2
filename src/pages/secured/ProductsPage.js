@@ -291,7 +291,7 @@ export const ProductsPage = () => {
                                         <TextField  value={newUnitPrice} variant={"outlined"} error={newUnitPrice<1?true:false} fullWidth={true} type={"number"} label={"Unit Price"}  InputProps={{ inputProps: { min: 0} }}  onChange={e=>setNewUnitPrice(e.target.value)}/>
                                     </div>
                                     <div className={"form-element-container"}>
-                                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <LocalizationProvider >
                                             <DemoContainer components={['DatePicker']} >
                                                 <DatePicker label="Expire Date" defaultValue={expireDate} minDate={date}  onChange={e=> {
                                                     setExpireChanges(true)
@@ -356,7 +356,7 @@ export const ProductsPage = () => {
                         <div className={"form-element-container"}>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DatePicker']} >
-                                    <DatePicker label="Expire Date" minDate={date}  onChange={e=>setExpireDate(e.$d)}/>
+                                    <DatePicker label="Expire Date"  onChange={e=>setExpireDate(e.$d)}/>
                                 </DemoContainer>
                             </LocalizationProvider>
                         </div>

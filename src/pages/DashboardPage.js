@@ -7,8 +7,8 @@ import Footer from "./components/Footer";
 const DashboardPage =()=>{
     return(
         <div style={{display:'flex'}}>
-            <Grid container>
-                <Grid item xs={1} sm={2}>
+            <Grid container spacing={0}>
+                <Grid item xs={1} sm={2} >
                     <SideDrawer/>
                 </Grid>
                 <Grid style={{height:'100vh'}} item xs={11} sm={10}>

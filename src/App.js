@@ -12,6 +12,7 @@ import "./App.css"
 import CategoriesPage from "./pages/secured/CategoriesPage";
 import DashboardHome from "./pages/secured/DashboardHome";
 import Products from "./pages/secured/Products";
+import ReportPage from "./pages/secured/ReportPage";
 
 function App() {
   return (
@@ -24,13 +25,13 @@ function App() {
                       <Route path={"inventory"} element={<ProductsPage/>}/>
                       <Route path={"myAccount"} element={<UserPage/>}/>
                       <Route path={"products"} element={<Products/>}/>
+                      <Route path={"reports"} element={<ReportPage/>}/>
                   </Route>
               </Route>
               <Route index element={<HomePage/>}/>
               <Route path={"/signup"} element={<SignUpPage/>}/>
             <Route path={"/login"} element={<LoginPage/>}/>
           </Routes>
-
     </BrowserRouter>
   );
 }

@@ -23,10 +23,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InventoryIcon from '@mui/icons-material/Inventory';
-import MenuItem from "@mui/material/MenuItem";
+import AssessmentIcon from '@mui/icons-material/Assessment';
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
-import Modal from "@mui/material/Modal";
 
 
 DialogContent.propTypes = {children: PropTypes.node};
@@ -46,6 +45,10 @@ export const SideDrawer = (props) => {
             path:"products",
             title:"Products",
             icon:<AddShoppingCartIcon/>
+        },{
+            path:"reports",
+            title:"Reports",
+            icon:<AssessmentIcon/>
         },
     ];
 
